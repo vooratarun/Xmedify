@@ -1,3 +1,4 @@
+
 //it is the basic code that is provided by react
 //you can change it according to your need
 
@@ -12,3 +13,4 @@
 //     <App />
 //   </React.StrictMode>
 // );
+
