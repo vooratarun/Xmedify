@@ -15,3 +15,4 @@
 .DS_Store
 .prettierignore
 assessment/node_modules
+node_modules

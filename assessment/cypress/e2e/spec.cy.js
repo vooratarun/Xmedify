@@ -15,10 +15,10 @@ describe('Hospital', () => {
     }).as('getHospitals');
   
     cy.get('div#state').click(); // Open state dropdown
-    cy.contains('li', 'Alabama', { timeout: 5000 }).click(); // Wait for state options to load and select Alabama
+    cy.contains('li', 'Alabama', { timeout: 15000 }).click(); // Wait for state options to load and select Alabama
   
     cy.get('div#city').click(); // Open city dropdown
-    cy.contains('li', 'DOTHAN', { timeout: 5000 }).click(); // Wait for city options to load and select DOTHAN
+    cy.contains('li', 'DOTHAN', { timeout: 15000 }).click(); // Wait for city options to load and select DOTHAN
   
     cy.get('#searchBtn').should('contain.text', 'Search').click(); // Click the search button
 
