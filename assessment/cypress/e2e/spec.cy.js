@@ -34,11 +34,11 @@ describe('Hospital', () => {
 
     cy.get('div#state') // Replace with the selector for the state dropdown
     .click();
-    cy.contains('li', 'Alabama') // Replace with a valid state option
+    cy.contains('li', 'Alabama',{ timeout: 15000 }) // Replace with a valid state option
     .click();
     cy.get('div#city')
     .click();
-    cy.contains('li', 'DOTHAN') // Replace with a valid city option
+    cy.contains('li', 'DOTHAN',{ timeout: 15000 }) // Replace with a valid city option
     .click();
 
     cy.get('#searchBtn').should('contain.text', 'Search').click(); // Click the search button
