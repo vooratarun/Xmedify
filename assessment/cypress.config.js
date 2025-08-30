@@ -15,7 +15,7 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/**/*.cy.js', // Update this path based on where your tests are stored
 
     // Optionally, set up a base URL for your app
-    baseUrl: 'http://localhost:3000', // Replace with your app's base URL
+    baseUrl: 'https://medify-zeta-seven.vercel.app/', // Replace with your app's base URL
 
     // Support file to load global configurations or utilities
     supportFile: 'cypress/support/e2e.js', // Update the support file location if needed
