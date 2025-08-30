@@ -2,13 +2,13 @@ import { Container, Stack, Box, Typography } from "@mui/material"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
+import Navbar from "../../components/Navbar/Navbar";
 import HospitalCard from "../../components/HospitalCard/HospitalCard"
 import icon from '../../assets/tick.png'
 import cta from '../../assets/cta.png'
 import HospitalSearch from "../../components/HospitalSearchForm/Search"
 import BookingModal from "../../components/BookingModal/BookingModal"
 import AutohideSnackbar from "../../components/AutohideSnackbar/AutohideSnackbar"
-import Navbar from "../../components/Navbar/Navbar";
 
 export default function Search() {
 
