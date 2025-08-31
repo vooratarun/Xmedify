@@ -9,7 +9,7 @@ import PatientCaring from "../../components/Sections/PatientCaring/PatientCaring
 import Specialists from "../../components/Sections/Specialists/Specialists";
 import Specialization from "../../components/Sections/Specialization/Specialization";
 import Offers from "../../components/Sections/Offers/Offers";
-import Navbar from "../../components/Navbar/Navbar2";
+// import Navbar from "../../components/Navbar/Navbar2";
 
 function Home() {
   return (
@@ -21,7 +21,7 @@ function Home() {
         }}
         mb={4}
       >
-        <Navbar />
+        {/* <Navbar /> */}
         <Container maxWidth="xl">
           <HeroSlider />
           <Stack

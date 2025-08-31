@@ -3,7 +3,7 @@ import HospitalCard from "../../components/HospitalCard/HospitalCard";
 import { useEffect, useState } from "react";
 import cta from "../../assets/images/cta.png";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import Navbar from "../../components/Navbar/Navbar";
+// import Navbar from "../../components/Navbar/Navbar";
 
 function MyBookings() {
   const [bookings, setBookings] = useState([]);
@@ -20,7 +20,7 @@ function MyBookings() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Box
         sx={{ background: "linear-gradient(#EFF5FE, rgba(241,247,255,0.47))" }}
       >

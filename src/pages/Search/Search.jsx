@@ -8,7 +8,7 @@ import cta from "../../assets/images/cta.png";
 import HospitalSearch from "../../components/HospitalSearchForm/Search";
 import BookingModal from "../../components/BookingModal/BookingModal";
 import AutohideSnackbar from "../../components/AutohideSnackbar/AutohideSnackbar";
-import Navbar from "../../components/Navbar/Navbar";
+// import Navbar from "../../components/Navbar/Navbar";
 
 function Search() {
   const [seachParams, setSearchParams] = useSearchParams();
@@ -59,7 +59,7 @@ function Search() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Box
         sx={{
           background: "linear-gradient(#EFF5FE, rgba(241,247,255,0.47))",
