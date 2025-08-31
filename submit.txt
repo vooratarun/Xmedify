@@ -1,1 +1,1 @@
-https://xmedifycrio2.netlify.app/
+http://localhost:3000/
