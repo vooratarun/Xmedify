@@ -1,0 +1,209 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 4,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-08-30T07:05:51.389Z",
+    "end": "2025-08-30T07:06:06.556Z",
+    "duration": 15167,
+    "testsRegistered": 6,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3c0ee444-038d-4fd9-bfc6-1b02bf8003ec",
+      "title": "",
+      "fullFile": "cypress/e2e/spec.cy.js",
+      "file": "cypress/e2e/spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7fb65481-da5b-49c3-aa17-ff3d29135e3c",
+          "title": "Hospital",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display state and city dropdowns",
+              "fullTitle": "Hospital should display state and city dropdowns",
+              "timedOut": null,
+              "duration": 1154,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('div#state').should('be.visible'); // Verify the State dropdown is present\ncy.get('div#city').should('be.visible'); // Verify the City dropdown is present",
+              "err": {},
+              "uuid": "a451d65d-d747-447f-a207-4c1d30352413",
+              "parentUUID": "7fb65481-da5b-49c3-aa17-ff3d29135e3c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should fetch hospitals when both state and city are selected",
+              "fullTitle": "Hospital should fetch hospitals when both state and city are selected",
+              "timedOut": null,
+              "duration": 3625,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('GET', 'https://meddata-backend.onrender.com/data?state=Alabama&city=DOTHAN', {\n  fixture: 'hospitals.json'\n}).as('getHospitals');\ncy.get('div#state').click(); // Open state dropdown\ncy.contains('li', 'Alabama', {\n  timeout: 15000\n}).click(); // Wait for state options to load and select Alabama\ncy.get('div#city').click(); // Open city dropdown\ncy.contains('li', 'DOTHAN', {\n  timeout: 15000\n}).click(); // Wait for city options to load and select DOTHAN\ncy.get('#searchBtn').should('contain.text', 'Search').click(); // Click the search button\ncy.wait('@getHospitals');\ncy.get('h1').should('contain.text', '2 medical centers available in dothan');",
+              "err": {},
+              "uuid": "5b723967-58b4-4d58-b598-c639ebb7a0e3",
+              "parentUUID": "7fb65481-da5b-49c3-aa17-ff3d29135e3c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should open appointment booking section when a medical center is clicked",
+              "fullTitle": "Hospital should open appointment booking section when a medical center is clicked",
+              "timedOut": null,
+              "duration": 4162,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('GET', 'https://meddata-backend.onrender.com/data?state=Alabama&city=DOTHAN', {\n  fixture: 'hospitals.json' // Use a mock JSON response file\n}).as('getHospitals');\ncy.get('div#state') // Replace with the selector for the state dropdown\n.click();\ncy.contains('li', 'Alabama', {\n  timeout: 15000\n}) // Replace with a valid state option\n.click();\ncy.get('div#city').click();\ncy.contains('li', 'DOTHAN', {\n  timeout: 15000\n}) // Replace with a valid city option\n.click();\ncy.get('#searchBtn').should('contain.text', 'Search').click(); // Click the search button\ncy.wait('@getHospitals');\ncy.get('button').contains('Book FREE Center Visit').should('be.visible');",
+              "err": {},
+              "uuid": "080bff4a-1987-4016-8831-2de34bde4b26",
+              "parentUUID": "7fb65481-da5b-49c3-aa17-ff3d29135e3c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should allow user to select date and time and book appointment",
+              "fullTitle": "Hospital should allow user to select date and time and book appointment",
+              "timedOut": null,
+              "duration": 3489,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('GET', 'https://meddata-backend.onrender.com/data?state=Alabama&city=DOTHAN', {\n  fixture: 'hospitals.json' // Use a mock JSON response file\n}).as('getHospitals');\ncy.get('div#state') // Replace with the selector for the state dropdown\n.click();\ncy.contains('li', 'Alabama') // Replace with a valid state option\n.click();\ncy.get('div#city').click();\ncy.contains('li', 'DOTHAN') // Replace with a valid city option\n.click();\ncy.get('#searchBtn').should('contain.text', 'Search').click(); // Click the search button\ncy.wait('@getHospitals');\ncy.get('button').contains('Book FREE Center Visit').click();\ncy.get('p').contains('Today');\ncy.get('p').contains('Morning');\ncy.get('p').contains('Afternoon');\ncy.get('p').contains('Evening');",
+              "err": {},
+              "uuid": "9c4497b3-bf0f-4c53-9a4d-48d50865ca8c",
+              "parentUUID": "7fb65481-da5b-49c3-aa17-ff3d29135e3c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should display all booked slots on the My Bookings page",
+              "fullTitle": "Hospital should display all booked slots on the My Bookings page",
+              "timedOut": null,
+              "duration": 536,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Navigate to the \"My Bookings\" page\ncy.visit('https://xmedifycrio2.netlify.app/my-bookings'); // Replace with the actual URL for the My Bookings page\ncy.get('h1').contains('My Bookings');",
+              "err": {
+                "message": "CypressError: `cy.visit()` failed trying to load:\n\nhttps://xmedifycrio2.netlify.app/my-bookings\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`",
+                "estack": "CypressError: `cy.visit()` failed trying to load:\n\nhttps://xmedifycrio2.netlify.app/my-bookings\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n    at <unknown> (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:131591:76)\n    at visitFailedByErr (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:131006:12)\n    at <unknown> (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:131574:13)\n    at tryCatcher (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://medifyapp/./cypress/e2e/spec.cy.js:79:7)",
+                "diff": null
+              },
+              "uuid": "cd9e71d3-a147-4010-8cbb-796fe4b5023d",
+              "parentUUID": "7fb65481-da5b-49c3-aa17-ff3d29135e3c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should persist bookings in localStorage after page reload",
+              "fullTitle": "Hospital should persist bookings in localStorage after page reload",
+              "timedOut": null,
+              "duration": 947,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const mockBookings = [{\n  \"Hospital Name\": \"southeast alabama medical center\",\n  \"City\": \"DOTHAN\",\n  \"State\": \"Alabama\",\n  \"Hospital Type\": \"General\",\n  \"Hospital overall rating\": \"4.5\",\n  bookingDate: \"2024-12-15\",\n  bookingTime: \"10:00 AM\"\n}];\ncy.window().then(win => {\n  win.localStorage.setItem('bookings', JSON.stringify(mockBookings));\n});\ncy.visit('https://xmedifycrio2.netlify.app/my-bookings'); // Replace with actual My Bookings URL\ncy.get('h3').contains('southeast alabama medical center', {\n  timeout: 15000\n}).should('be.visible');\ncy.reload();\ncy.get('h3').contains('southeast alabama medical center', {\n  timeout: 15000\n}).should('be.visible');",
+              "err": {
+                "message": "CypressError: `cy.visit()` failed trying to load:\n\nhttps://xmedifycrio2.netlify.app/my-bookings\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`",
+                "estack": "CypressError: `cy.visit()` failed trying to load:\n\nhttps://xmedifycrio2.netlify.app/my-bookings\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n    at <unknown> (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:131591:76)\n    at visitFailedByErr (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:131006:12)\n    at <unknown> (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:131574:13)\n    at tryCatcher (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://xmedifycrio2.netlify.app/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://medifyapp/./cypress/e2e/spec.cy.js:101:7)",
+                "diff": null
+              },
+              "uuid": "5a0288b0-3449-49bd-b6ca-e35553fa005f",
+              "parentUUID": "7fb65481-da5b-49c3-aa17-ff3d29135e3c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a451d65d-d747-447f-a207-4c1d30352413",
+            "5b723967-58b4-4d58-b598-c639ebb7a0e3",
+            "080bff4a-1987-4016-8831-2de34bde4b26",
+            "9c4497b3-bf0f-4c53-9a4d-48d50865ca8c"
+          ],
+          "failures": [
+            "cd9e71d3-a147-4010-8cbb-796fe4b5023d",
+            "5a0288b0-3449-49bd-b6ca-e35553fa005f"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 13913,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mocha",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

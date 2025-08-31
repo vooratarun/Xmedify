@@ -10,8 +10,14 @@ export default function Footer() {
 
     return (
         <Box bgcolor='primary.secondary' pb={3} pt={6}>
+
             <Container maxWidth='xl'>
+
+
                 <Grid container spacing={4}>
+
+
+                    
                     <Grid item xs={12} md={4.5}>
                         <Stack alignItems='flex-start' justifyContent='space-between' height={1}>
                             <Box
@@ -29,6 +35,8 @@ export default function Footer() {
                             </Stack>
                         </Stack>
                     </Grid>
+
+
 
                     <Grid item xs={12} md={2.5}>
                         <Stack spacing={2}>

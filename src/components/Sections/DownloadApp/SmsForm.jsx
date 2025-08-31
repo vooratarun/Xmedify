@@ -6,6 +6,8 @@ export default function SmsForm() {
             <Typography fontWeight={600} mb={1}>
                 Get the link to download the app
             </Typography>
+
+            
             <Box component='form' sx={{ display: 'flex', gap: 2, flexDirection: { xs: 'column', md: 'row' } }}>
                 <TextField
                     sx={{
@@ -26,6 +28,8 @@ export default function SmsForm() {
                     Send SMS
                 </Button>
             </Box>
+
+
         </Box>
     )
 }

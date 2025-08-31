@@ -22,6 +22,8 @@ export default function DownloadApp() {
                     </Grid>
 
                     <Grid item xs={12} md={6.5} >
+                        
+                        
                         <Box position='relative' pl={{ xs: '36px', md: '50px' }} mb={{ xs: 4, md: 0 }}>
                             <Typography variant='h2' mb={2}>
                                 Download the<br />
@@ -50,6 +52,8 @@ export default function DownloadApp() {
                                 >
                                     Google Play
                                 </Button>
+
+
                                 <Button
                                     sx={{ bgcolor: '#333', color: '#fff', py: 1.5, borderRadius: 1.5 }}
                                     size='large'
@@ -59,8 +63,14 @@ export default function DownloadApp() {
                                 >
                                     App Store
                                 </Button>
+
+
                             </Stack>
+
+
                         </Box>
+
+                        
                     </Grid>
 
                 </Grid>

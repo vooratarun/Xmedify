@@ -1,0 +1,213 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 3,
+    "pending": 0,
+    "failures": 3,
+    "start": "2025-08-31T09:21:33.947Z",
+    "end": "2025-08-31T09:21:56.287Z",
+    "duration": 22340,
+    "testsRegistered": 6,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ec118bb1-6e7c-466a-8320-fcd6f02346b8",
+      "title": "",
+      "fullFile": "cypress/e2e/spec.cy.js",
+      "file": "cypress/e2e/spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2aa9a42d-c62b-4506-bb03-898fabd996b4",
+          "title": "Hospital",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display state and city dropdowns",
+              "fullTitle": "Hospital should display state and city dropdowns",
+              "timedOut": null,
+              "duration": 882,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('div#state').should('be.visible'); // Verify the State dropdown is present\ncy.get('div#city').should('be.visible'); // Verify the City dropdown is present",
+              "err": {},
+              "uuid": "9e3cdc05-fdc2-44df-91cd-85c6ab66b405",
+              "parentUUID": "2aa9a42d-c62b-4506-bb03-898fabd996b4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should fetch hospitals when both state and city are selected",
+              "fullTitle": "Hospital should fetch hospitals when both state and city are selected",
+              "timedOut": null,
+              "duration": 6697,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('GET', 'https://meddata-backend.onrender.com/data?state=Alabama&city=DOTHAN', {\n  fixture: 'hospitals.json'\n}).as('getHospitals');\ncy.get('div#state').click(); // Open state dropdown\ncy.contains('li', 'Alabama', {\n  timeout: 15000\n}).click(); // Wait for state options to load and select Alabama\ncy.get('div#city').click(); // Open city dropdown\ncy.contains('li', 'DOTHAN', {\n  timeout: 15000\n}).click(); // Wait for city options to load and select DOTHAN\ncy.get('#searchBtn').should('contain.text', 'Search').click(); // Click the search button\ncy.wait('@getHospitals');\ncy.get('h1').should('contain.text', '2 medical centers available in dothan');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#searchBtn`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#searchBtn`, but never found it.\n    at Context.eval (webpack://medifyapp/./cypress/e2e/spec.cy.js:23:25)",
+                "diff": null
+              },
+              "uuid": "e3ef06de-2e31-4a33-a612-ed908aba3996",
+              "parentUUID": "2aa9a42d-c62b-4506-bb03-898fabd996b4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should open appointment booking section when a medical center is clicked",
+              "fullTitle": "Hospital should open appointment booking section when a medical center is clicked",
+              "timedOut": null,
+              "duration": 5974,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('GET', 'https://meddata-backend.onrender.com/data?state=Alabama&city=DOTHAN', {\n  fixture: 'hospitals.json' // Use a mock JSON response file\n}).as('getHospitals');\ncy.get('div#state') // Replace with the selector for the state dropdown\n.click();\ncy.contains('li', 'Alabama', {\n  timeout: 15000\n}) // Replace with a valid state option\n.click();\ncy.get('div#city').click();\ncy.contains('li', 'DOTHAN', {\n  timeout: 15000\n}) // Replace with a valid city option\n.click();\ncy.get('#searchBtn').should('contain.text', 'Search').click(); // Click the search button\ncy.wait('@getHospitals');\ncy.get('button').contains('Book FREE Center Visit').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#searchBtn`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#searchBtn`, but never found it.\n    at Context.eval (webpack://medifyapp/./cypress/e2e/spec.cy.js:44:25)",
+                "diff": null
+              },
+              "uuid": "ad3fc1ef-edb5-416b-bb64-92e341a0883b",
+              "parentUUID": "2aa9a42d-c62b-4506-bb03-898fabd996b4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should allow user to select date and time and book appointment",
+              "fullTitle": "Hospital should allow user to select date and time and book appointment",
+              "timedOut": null,
+              "duration": 6102,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('GET', 'https://meddata-backend.onrender.com/data?state=Alabama&city=DOTHAN', {\n  fixture: 'hospitals.json' // Use a mock JSON response file\n}).as('getHospitals');\ncy.get('div#state') // Replace with the selector for the state dropdown\n.click();\ncy.contains('li', 'Alabama') // Replace with a valid state option\n.click();\ncy.get('div#city').click();\ncy.contains('li', 'DOTHAN') // Replace with a valid city option\n.click();\ncy.get('#searchBtn').should('contain.text', 'Search').click(); // Click the search button\ncy.wait('@getHospitals');\ncy.get('button').contains('Book FREE Center Visit').click();\ncy.get('p').contains('Today');\ncy.get('p').contains('Morning');\ncy.get('p').contains('Afternoon');\ncy.get('p').contains('Evening');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#searchBtn`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#searchBtn`, but never found it.\n    at Context.eval (webpack://medifyapp/./cypress/e2e/spec.cy.js:65:25)",
+                "diff": null
+              },
+              "uuid": "6bd204de-0524-4777-9a9a-f9873dafe75b",
+              "parentUUID": "2aa9a42d-c62b-4506-bb03-898fabd996b4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should display all booked slots on the My Bookings page",
+              "fullTitle": "Hospital should display all booked slots on the My Bookings page",
+              "timedOut": null,
+              "duration": 691,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Navigate to the \"My Bookings\" page\ncy.visit('https://medify-one.vercel.app/my-bookings'); // Replace with the actual URL for the My Bookings page\ncy.get('h1').contains('My Bookings');",
+              "err": {},
+              "uuid": "ce79c360-f34f-47b9-8d4e-4d7f90a677c0",
+              "parentUUID": "2aa9a42d-c62b-4506-bb03-898fabd996b4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should persist bookings in localStorage after page reload",
+              "fullTitle": "Hospital should persist bookings in localStorage after page reload",
+              "timedOut": null,
+              "duration": 824,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const mockBookings = [{\n  \"Hospital Name\": \"southeast alabama medical center\",\n  \"City\": \"DOTHAN\",\n  \"State\": \"Alabama\",\n  \"Hospital Type\": \"General\",\n  \"Hospital overall rating\": \"4.5\",\n  bookingDate: \"2024-12-15\",\n  bookingTime: \"10:00 AM\"\n}];\ncy.window().then(win => {\n  win.localStorage.setItem('bookings', JSON.stringify(mockBookings));\n});\ncy.visit('https://medify-one.vercel.app/my-bookings'); // Replace with actual My Bookings URL\ncy.get('h3').contains('southeast alabama medical center', {\n  timeout: 15000\n}).should('be.visible');\ncy.reload();\ncy.get('h3').contains('southeast alabama medical center', {\n  timeout: 15000\n}).should('be.visible');",
+              "err": {},
+              "uuid": "aef2fa58-e2f6-4340-a4dc-227bbf70a860",
+              "parentUUID": "2aa9a42d-c62b-4506-bb03-898fabd996b4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9e3cdc05-fdc2-44df-91cd-85c6ab66b405",
+            "ce79c360-f34f-47b9-8d4e-4d7f90a677c0",
+            "aef2fa58-e2f6-4340-a4dc-227bbf70a860"
+          ],
+          "failures": [
+            "e3ef06de-2e31-4a33-a612-ed908aba3996",
+            "ad3fc1ef-edb5-416b-bb64-92e341a0883b",
+            "6bd204de-0524-4777-9a9a-f9873dafe75b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 21170,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mocha",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
